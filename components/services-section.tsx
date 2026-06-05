@@ -3,45 +3,47 @@ import { services } from "@/lib/site-content";
 
 export function ServicesSection() {
   return (
-    <section id="services" className="site-shell px-0 py-[120px]">
-      <div className="mb-16 space-y-4 text-center">
-        <span className="brand-mono text-sm uppercase tracking-widest text-[var(--primary)]">Ecosistema de Soluciones</span>
-        <h2 className="text-4xl font-bold text-[var(--text)] md:text-5xl">Capacidades Tecnológicas Avanzadas</h2>
-      </div>
+    <div className="gsap-section-content flex min-h-screen items-center justify-center bg-[var(--surface)]">
+      <div className="site-shell px-0 py-10">
+        <div className="mb-10 space-y-3 text-center">
+          <span className="gsap-animate-in brand-mono text-sm uppercase tracking-widest text-[var(--primary)]">Ecosistema de Soluciones</span>
+          <h2 className="gsap-animate-in text-4xl font-bold text-[var(--text)] md:text-5xl">Capacidades Tecnológicas Avanzadas</h2>
+        </div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <div
-            key={service.title}
-            className={`glass-card group relative overflow-hidden rounded-xl p-10 ${service.featured ? "lg:col-span-2" : ""}`}
-          >
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
             <div
-              className={`absolute bg-[rgba(211,187,255,0.05)] rounded-full transition-all duration-500 group-hover:bg-[rgba(211,187,255,0.2)] ${service.featured ? "bottom-0 right-0 h-64 w-64" : "-bottom-10 -right-10 h-32 w-32"}`}
-            />
+              key={service.title}
+              className={`gsap-animate-in glass-card group relative overflow-hidden rounded-xl p-7 ${service.featured ? "lg:col-span-2" : ""}`}
+            >
+              <div
+                className={`absolute bg-[rgba(211,187,255,0.05)] rounded-full transition-all duration-500 group-hover:bg-[rgba(211,187,255,0.2)] ${service.featured ? "bottom-0 right-0 h-64 w-64" : "-bottom-10 -right-10 h-32 w-32"}`}
+              />
 
-            {service.featured ? (
-              <div className="flex flex-col items-start gap-8 md:flex-row">
-                <div className="flex-1">
-                  <MaterialIcon name={service.icon} className="mb-6 text-4xl text-[var(--primary)]" />
-                  <h3 className="mb-4 text-3xl font-semibold text-[var(--text)]">{service.title}</h3>
+              {service.featured ? (
+                <div className="flex flex-col items-start gap-8 md:flex-row">
+                  <div className="flex-1">
+                    <MaterialIcon name={service.icon} className="mb-6 text-4xl text-[var(--primary)]" />
+                    <h3 className="mb-3 text-2xl font-semibold text-[var(--text)]">{service.title}</h3>
+                    <p className="text-[var(--muted)]">{service.description}</p>
+                  </div>
+                  <div className="flex-none pt-4">
+                    <button className="rounded-lg border border-[rgba(211,187,255,0.2)] bg-[rgba(211,187,255,0.1)] px-6 py-3 font-bold text-[var(--primary)] transition-all hover:bg-[var(--primary)] hover:text-white">
+                      Solicitar Demo
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <MaterialIcon name={service.icon} className="mb-4 text-3xl text-[var(--primary)]" />
+                  <h3 className="mb-3 text-2xl font-semibold text-[var(--text)]">{service.title}</h3>
                   <p className="text-[var(--muted)]">{service.description}</p>
-                </div>
-                <div className="flex-none pt-4">
-                  <button className="rounded-lg border border-[rgba(211,187,255,0.2)] bg-[rgba(211,187,255,0.1)] px-6 py-3 font-bold text-[var(--primary)] transition-all hover:bg-[var(--primary)] hover:text-white">
-                    Solicitar Demo
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <>
-                <MaterialIcon name={service.icon} className="mb-6 text-4xl text-[var(--primary)]" />
-                <h3 className="mb-4 text-3xl font-semibold text-[var(--text)]">{service.title}</h3>
-                <p className="text-[var(--muted)]">{service.description}</p>
-              </>
-            )}
-          </div>
-        ))}
+                </>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
