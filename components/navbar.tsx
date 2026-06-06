@@ -14,11 +14,11 @@ export function GsapNavbar() {
       <nav className="gsap-header-nav">
         <div className="flex items-center gap-2">
           <a href="#inicio" data-gsap-nav onClick={closeMenu}>
-            <LogoMark alt="MORVEN Logo" className="h-12 w-auto" />
+            <LogoMark alt="MORVEN Logo" className="h-9 w-auto lg:h-12" />
           </a>
         </div>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 xl:flex xl:gap-8">
           {navigationItems.map((item) => (
             <a
               key={item.href}
@@ -33,7 +33,7 @@ export function GsapNavbar() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 text-white md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 text-white xl:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label="Abrir menu"

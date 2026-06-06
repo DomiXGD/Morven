@@ -13,7 +13,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="h-full bg-[linear-gradient(180deg,rgba(10,25,47,0.72),rgba(2,4,9,0.96))]">
+    <div className="flex h-full min-h-0 flex-col bg-[linear-gradient(180deg,rgba(10,25,47,0.72),rgba(2,4,9,0.96))]">
       <div className="border-b border-white/10 bg-black/20 px-4 py-2.5 backdrop-blur-md sm:px-5">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
@@ -25,8 +25,8 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid h-full min-h-[440px] md:grid-cols-[0.4fr_0.6fr]">
-        <div className="border-b border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-4 md:border-b-0 md:border-r md:p-5">
+      <div className="grid min-h-0 flex-1 xl:grid-cols-[0.4fr_0.6fr]">
+        <div className="border-b border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-4 xl:border-b-0 xl:border-r xl:p-5">
           <div className="flex h-full flex-col gap-4">
             <div>
               <p className="brand-mono text-[11px] uppercase tracking-[0.28em] text-[var(--primary)]">Contact</p>
@@ -47,7 +47,7 @@ export function ContactForm() {
               </div>
             </div>
 
-            <div className="grid gap-2 md:grid-cols-2">
+            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-2">
               <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-3.5">
                 <p className="brand-mono text-[10px] uppercase tracking-[0.24em] text-white/45">Stack</p>
                 <p className="mt-1.5 text-[12px] leading-5 text-white/80">SaaS, automatizacion, arquitectura TI</p>
@@ -60,7 +60,7 @@ export function ContactForm() {
           </div>
         </div>
 
-        <div className="p-4 sm:p-5 md:p-5">
+        <div className="min-h-0 p-4 sm:p-5 xl:p-5">
           <div className="mb-4">
             <p className="brand-mono text-[11px] uppercase tracking-[0.28em] text-white/45">Project intake</p>
           </div>

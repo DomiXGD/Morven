@@ -1,6 +1,5 @@
 .shellWrap {
-  width: 100%;
-  max-width: 1120px;
+  width: min(1120px, calc(100vw - 3rem), calc((100vh - 10rem) * 1.647));
   margin: 0 auto;
   padding-bottom: 3.5rem;
   perspective: 1800px;
@@ -59,8 +58,24 @@
 
 .screenInner {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
   animation: screen-content-in 820ms ease-out both 140ms;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.34) transparent;
+}
+
+.screenInner::-webkit-scrollbar {
+  width: 8px;
+}
+
+.screenInner::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.screenInner::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .camera {
@@ -147,7 +162,7 @@
 
 @media (max-width: 1023px) {
   .shellWrap {
-    max-width: 100%;
+    width: min(100%, calc((100vh - 8.5rem) * 1.56));
     padding-bottom: 2.75rem;
   }
 
@@ -170,13 +185,11 @@
     width: calc(100% + 72px);
   }
 
-  .screenInner {
-    overflow: auto;
-  }
 }
 
 @media (max-width: 767px) {
   .shellWrap {
+    width: 100%;
     padding-bottom: 0;
   }
 
@@ -201,9 +214,6 @@
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
   }
 
-  .screenInner {
-    overflow: auto;
-  }
 }
 
 @keyframes laptop-rise {
