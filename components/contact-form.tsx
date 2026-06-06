@@ -25,13 +25,15 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid min-h-0 flex-1 xl:grid-cols-[0.4fr_0.6fr]">
-        <div className="border-b border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-4 xl:border-b-0 xl:border-r xl:p-5">
+      <div className="grid min-h-0 flex-1 lg:grid-cols-[0.42fr_0.58fr]">
+        <div className="border-b border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-4 sm:p-5 lg:border-b-0 lg:border-r">
           <div className="flex h-full flex-col gap-4">
             <div>
               <p className="brand-mono text-[11px] uppercase tracking-[0.28em] text-[var(--primary)]">Contact</p>
-              <h2 className="mt-2.5 max-w-xs text-[2rem] font-bold leading-[1.05] text-white">Listo para escalar?</h2>
-              <p className="mt-3 max-w-sm text-[12px] leading-5 text-white/62">
+              <h2 className="mt-2.5 max-w-xs text-[1.8rem] font-bold leading-[1.05] text-white sm:text-[2rem]">
+                Listo para escalar?
+              </h2>
+              <p className="mt-3 max-w-sm text-[12px] leading-5 text-white/62 sm:text-[13px]">
                 Hablenos de su proyecto. Un consultor senior se pondra en contacto en menos de 24 horas con una ruta clara para avanzar.
               </p>
 
@@ -47,7 +49,7 @@ export function ContactForm() {
               </div>
             </div>
 
-            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-2">
+            <div className="grid gap-2 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-3.5">
                 <p className="brand-mono text-[10px] uppercase tracking-[0.24em] text-white/45">Stack</p>
                 <p className="mt-1.5 text-[12px] leading-5 text-white/80">SaaS, automatizacion, arquitectura TI</p>
@@ -60,7 +62,7 @@ export function ContactForm() {
           </div>
         </div>
 
-        <div className="min-h-0 p-4 sm:p-5 xl:p-5">
+        <div className="min-h-0 p-4 sm:p-5">
           <div className="mb-4">
             <p className="brand-mono text-[11px] uppercase tracking-[0.28em] text-white/45">Project intake</p>
           </div>
@@ -76,7 +78,7 @@ export function ContactForm() {
                 type="text"
                 required
                 placeholder="Ej. Alexander Pierce"
-                className="w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-white transition-all placeholder:text-white/28 focus:border-[var(--primary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
+                className="w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-white transition-all placeholder:text-white/28 focus:border-[var(--primary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)] sm:py-3.5"
               />
             </div>
             <div>
@@ -89,7 +91,7 @@ export function ContactForm() {
                 type="email"
                 required
                 placeholder="a.pierce@company.com"
-                className="w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-white transition-all placeholder:text-white/28 focus:border-[var(--primary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
+                className="w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-white transition-all placeholder:text-white/28 focus:border-[var(--primary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)] sm:py-3.5"
               />
             </div>
             <div>
@@ -99,15 +101,15 @@ export function ContactForm() {
               <textarea
                 id="message"
                 name="message"
-                rows={3}
+                rows={4}
                 required
                 placeholder="Describa brevemente sus necesidades..."
-                className="w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-white transition-all placeholder:text-white/28 focus:border-[var(--primary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
+                className="min-h-28 w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-white transition-all placeholder:text-white/28 focus:border-[var(--primary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)] sm:min-h-32 sm:py-3.5"
               />
             </div>
             <button
               type="submit"
-              className="w-full rounded-xl bg-[var(--primary-container)] py-3 font-bold text-white shadow-lg shadow-[rgba(109,40,217,0.2)] transition-all hover:brightness-125"
+              className="w-full rounded-xl bg-[var(--primary-container)] py-3 font-bold text-white shadow-lg shadow-[rgba(109,40,217,0.2)] transition-all hover:brightness-125 sm:py-3.5"
             >
               Enviar Solicitud
             </button>

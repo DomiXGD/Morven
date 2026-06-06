@@ -5,8 +5,8 @@ import { footerLegal, footerResources, footerSocials } from "@/lib/site-content"
 export function Footer() {
   return (
     <div className="gsap-section-content flex min-h-screen items-center justify-center border-t border-white/5 bg-[var(--surface-lowest)]">
-      <div className="site-shell px-0 py-[120px]">
-        <div className="mb-16 grid grid-cols-1 gap-2 md:grid-cols-4">
+      <div className="site-shell px-0 py-[clamp(3.5rem,8vh,7.5rem)]">
+        <div className="mb-10 grid grid-cols-1 gap-8 md:mb-16 md:grid-cols-4 md:gap-6">
           <div className="col-span-1 space-y-6 md:col-span-2">
             <div className="gsap-animate-in flex items-center gap-2">
               <LogoMark alt="MORVEN Footer Logo" className="h-10 w-auto" />
@@ -55,9 +55,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="gsap-animate-in flex flex-col justify-between gap-4 border-t border-white/5 pt-8 text-sm text-[var(--muted)] md:flex-row">
+        <div className="gsap-animate-in flex flex-col justify-between gap-4 border-t border-white/5 pt-6 text-sm text-[var(--muted)] md:flex-row md:pt-8">
           <p>© 2024 MORVEN. All rights reserved. High-Performance Enterprise Solutions.</p>
-          <div className="brand-mono flex gap-6 text-[10px] uppercase tracking-tighter opacity-40">
+          <div className="brand-mono flex flex-wrap gap-4 text-[10px] uppercase tracking-tighter opacity-40 md:gap-6">
             <span>Precision.</span>
             <span>Scale.</span>
             <span>Security.</span>

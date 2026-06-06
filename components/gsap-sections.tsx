@@ -27,6 +27,7 @@ type GsapSectionsContainerProps = {
 
 export function GsapSectionsContainer({ children }: GsapSectionsContainerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const desktopModeRef = useRef(false);
   const stateRef = useRef<{
     currentIndex: number;
     animating: boolean;
@@ -208,6 +209,9 @@ export function GsapSectionsContainer({ children }: GsapSectionsContainerProps) 
     const container = containerRef.current;
     if (!container) return;
 
+    const isDesktopMode = window.matchMedia("(min-width: 1024px)").matches;
+    desktopModeRef.current = isDesktopMode;
+
     const sections = Array.from(container.querySelectorAll<HTMLElement>(".gsap-section"));
     const outerWrappers = Array.from(container.querySelectorAll<HTMLElement>(".gsap-wrapper-outer"));
     const innerWrappers = Array.from(container.querySelectorAll<HTMLElement>(".gsap-wrapper-inner"));
@@ -220,6 +224,14 @@ export function GsapSectionsContainer({ children }: GsapSectionsContainerProps) 
     state.backgrounds = backgrounds;
     state.currentIndex = -1;
     state.animating = false;
+
+    if (!isDesktopMode) {
+      const navLinks = document.querySelectorAll("[data-gsap-nav]");
+      navLinks.forEach((link) => link.classList.remove("gsap-nav-active"));
+      const firstLink = document.querySelector('[data-gsap-nav][href="#inicio"]');
+      firstLink?.classList.add("gsap-nav-active");
+      return;
+    }
 
     gsap.set(sections, { autoAlpha: 0, zIndex: 0 });
     gsap.set(outerWrappers, { yPercent: 100 });
@@ -293,6 +305,10 @@ export function GsapSectionsContainer({ children }: GsapSectionsContainerProps) 
     };
 
     const handleNavClick = (event: Event) => {
+      if (!desktopModeRef.current) {
+        return;
+      }
+
       event.preventDefault();
       const target = event.currentTarget as HTMLAnchorElement;
       const href = target.getAttribute("href");

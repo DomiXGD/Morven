@@ -20,12 +20,7 @@ export function GsapNavbar() {
 
         <div className="hidden items-center gap-6 xl:flex xl:gap-8">
           {navigationItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              data-gsap-nav
-              className="gsap-nav-link"
-            >
+            <a key={item.href} href={item.href} data-gsap-nav className="gsap-nav-link">
               {item.label}
             </a>
           ))}
@@ -39,7 +34,7 @@ export function GsapNavbar() {
           aria-label="Abrir menu"
           onClick={() => setIsOpen((value) => !value)}
         >
-          <span className="text-2xl">{isOpen ? "×" : "≡"}</span>
+          <span className="text-2xl">{isOpen ? "\u00D7" : "\u2261"}</span>
         </button>
       </nav>
 
@@ -64,5 +59,4 @@ export function GsapNavbar() {
   );
 }
 
-// Keep the original Navbar export for backward compatibility
 export { GsapNavbar as Navbar };

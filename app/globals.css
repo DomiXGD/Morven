@@ -221,3 +221,49 @@ textarea {
     height: 4em;
   }
 }
+
+@media (max-width: 1023px) {
+  html,
+  body {
+    overflow: auto;
+    height: auto;
+  }
+
+  body {
+    user-select: auto;
+  }
+
+  .site-shell {
+    width: min(100% - 1.5rem, 1280px);
+  }
+
+  .gsap-sections-container {
+    height: auto;
+  }
+
+  .gsap-section {
+    position: relative;
+    top: auto;
+    height: auto;
+    visibility: visible;
+  }
+
+  .gsap-wrapper-outer,
+  .gsap-wrapper-inner,
+  .gsap-background {
+    height: auto;
+    overflow: visible;
+  }
+
+  .gsap-section-content {
+    height: auto;
+    min-height: auto;
+    justify-content: flex-start;
+    padding-top: 6.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .gsap-header-nav {
+    padding: 0 1rem;
+  }
+}
