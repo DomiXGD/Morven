@@ -21,7 +21,9 @@ export function ContactForm() {
             <span className="h-3 w-3 rounded-full bg-[#ffbd2f]" />
             <span className="h-3 w-3 rounded-full bg-[#28c840]" />
           </div>
-          <span className="brand-mono text-[11px] uppercase tracking-[0.24em] text-white/45">morven / contact</span>
+          <span className="brand-mono hidden text-[11px] uppercase tracking-[0.24em] text-white/45 min-[390px]:inline">
+            morven / contact
+          </span>
         </div>
       </div>
 
@@ -30,7 +32,7 @@ export function ContactForm() {
           <div className="flex h-full flex-col gap-4">
             <div>
               <p className="brand-mono text-[11px] uppercase tracking-[0.28em] text-[var(--primary)]">Contact</p>
-              <h2 className="mt-2.5 max-w-xs text-[1.8rem] font-bold leading-[1.05] text-white sm:text-[2rem]">
+              <h2 className="mt-2.5 max-w-xs text-[1.65rem] font-bold leading-[1.05] text-white min-[390px]:text-[1.8rem] sm:text-[2rem]">
                 Listo para escalar?
               </h2>
               <p className="mt-3 max-w-sm text-[12px] leading-5 text-white/62 sm:text-[13px]">
@@ -40,11 +42,13 @@ export function ContactForm() {
               <div className="mt-4 space-y-2">
                 <div className="flex items-center gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-3.5 py-2.5">
                   <MaterialIcon name="mail" className="text-[18px] text-[var(--primary)]" />
-                  <span className="text-[13px] text-white/82">solutions@morven.com</span>
+                  <span className="break-all text-[12px] text-white/82 min-[390px]:text-[13px] sm:break-normal">
+                    solutions@morven.com
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-3.5 py-2.5">
                   <MaterialIcon name="location_on" className="text-[18px] text-[var(--primary)]" />
-                  <span className="text-[13px] text-white/82">Tech District, Global Hub</span>
+                  <span className="text-[12px] text-white/82 min-[390px]:text-[13px]">Tech District, Global Hub</span>
                 </div>
               </div>
             </div>
@@ -67,7 +71,7 @@ export function ContactForm() {
             <p className="brand-mono text-[11px] uppercase tracking-[0.28em] text-white/45">Project intake</p>
           </div>
 
-          <form className="space-y-3.5" onSubmit={handleSubmit}>
+          <form className="space-y-3 max-[420px]:space-y-2.5" onSubmit={handleSubmit}>
             <div>
               <label className="brand-mono mb-2 block text-[11px] uppercase tracking-[0.22em] text-[var(--muted)]" htmlFor="name">
                 Nombre Completo

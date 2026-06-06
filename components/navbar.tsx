@@ -14,7 +14,7 @@ export function GsapNavbar() {
       <nav className="gsap-header-nav">
         <div className="flex items-center gap-2">
           <a href="#inicio" data-gsap-nav onClick={closeMenu}>
-            <LogoMark alt="MORVEN Logo" className="h-9 w-auto lg:h-12" />
+            <LogoMark alt="MORVEN Logo" className="h-7 w-auto sm:h-9 lg:h-12" />
           </a>
         </div>
 
@@ -28,7 +28,7 @@ export function GsapNavbar() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 text-white xl:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-white sm:h-11 sm:w-11 xl:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label="Abrir menu"

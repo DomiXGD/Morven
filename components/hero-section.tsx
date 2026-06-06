@@ -3,30 +3,30 @@ import { LogoMark } from "@/components/logo-mark";
 
 export function HeroSection() {
   return (
-    <div className="gsap-section-content relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 text-center sm:px-6">
+    <div className="gsap-section-content relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 pb-12 pt-24 text-center sm:px-6 sm:pb-16 sm:pt-28">
       <div className="hero-glow absolute inset-0 z-0" />
-      <div className="absolute left-0 top-16 h-40 w-40 animate-pulse rounded-full bg-[rgba(211,187,255,0.05)] blur-3xl sm:left-10 sm:top-20 sm:h-64 sm:w-64" />
+      <div className="absolute left-0 top-16 h-32 w-32 animate-pulse rounded-full bg-[rgba(211,187,255,0.05)] blur-3xl sm:left-10 sm:top-20 sm:h-64 sm:w-64" />
       <div
-        className="absolute bottom-16 right-0 h-56 w-56 animate-pulse rounded-full bg-[rgba(185,199,228,0.05)] blur-3xl sm:bottom-20 sm:right-10 sm:h-96 sm:w-96"
+        className="absolute bottom-16 right-0 h-40 w-40 animate-pulse rounded-full bg-[rgba(185,199,228,0.05)] blur-3xl sm:bottom-20 sm:right-10 sm:h-96 sm:w-96"
         style={{ animationDelay: "2s" }}
       />
 
-      <div className="relative z-10 max-w-4xl">
+      <div className="relative z-10 max-w-4xl max-[420px]:max-w-sm">
         <div className="gsap-animate-in">
           <LogoMark
             alt="MORVEN Large Logo"
-            className="mx-auto mb-6 w-44 drop-shadow-[0_0_30px_rgba(109,40,217,0.3)] sm:mb-8 sm:w-56 md:w-80"
+            className="mx-auto mb-6 w-36 drop-shadow-[0_0_30px_rgba(109,40,217,0.3)] max-[420px]:w-32 sm:mb-8 sm:w-56 md:w-80"
           />
         </div>
 
-        <h1 className="gsap-animate-in text-3xl font-extrabold leading-tight text-[var(--text)] sm:text-4xl md:text-6xl">
-          Arquitectura tecnológica escalable para empresas modernas.
+        <h1 className="gsap-animate-in text-[2rem] font-extrabold leading-[1.05] text-[var(--text)] max-[420px]:text-[1.7rem] sm:text-4xl md:text-6xl">
+          Arquitectura tecnologica escalable para empresas modernas.
         </h1>
-        <p className="gsap-animate-in mx-auto mt-4 max-w-3xl text-base leading-7 text-[var(--muted)] sm:mt-6 sm:text-lg sm:leading-8 md:text-xl">
-          Diseñamos soluciones digitales, SaaS y sistemas empresariales preparados para crecer con tu negocio.
+        <p className="gsap-animate-in mx-auto mt-4 max-w-3xl text-sm leading-6 text-[var(--muted)] max-[420px]:text-[0.92rem] sm:mt-6 sm:text-lg sm:leading-8 md:text-xl">
+          Disenamos soluciones digitales, SaaS y sistemas empresariales preparados para crecer con tu negocio.
         </p>
 
-        <div className="gsap-animate-in mt-8 flex flex-col justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+        <div className="gsap-animate-in mx-auto mt-8 flex max-w-sm flex-col justify-center gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:gap-4">
           <a
             href="#services"
             data-gsap-nav
