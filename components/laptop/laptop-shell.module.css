@@ -245,3 +245,28 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* Large screen: force the device to fit available viewport height (keeps mobiles unchanged) */
+@media (min-width: 1024px) {
+  .shellWrap {
+    /* use viewport-based width but cap at design width so laptop stays proportional */
+    width: min(1120px, 86vw);
+    max-height: calc(100vh - 6rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+    margin-inline: auto;
+  }
+
+  .device {
+    /* keep aspect-ratio and let width drive the size; height will follow */
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 7rem);
+  }
+
+  .screenInner {
+    overflow: auto;
+  }
+}
