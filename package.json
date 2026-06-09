@@ -2,7 +2,8 @@
   "name": "morven",
   "private": true,
   "scripts": {
-    "dev": "concurrently -k -n web,api -c cyan,magenta \"next dev\" \"tsx watch server/index.ts\"",
+    "dev": "next dev",
+    "dev:full": "concurrently -k -n web,api -c cyan,magenta \"next dev\" \"tsx watch server/index.ts\"",
     "dev:web": "next dev",
     "dev:api": "tsx watch server/index.ts",
     "start:api": "node --import tsx server/index.ts",
@@ -10,6 +11,8 @@
     "start": "next start",
     "lint": "eslint .",
     "docker:up": "docker compose up --build",
+    "docker:infra": "docker compose up -d db api",
+    "docker:full": "docker compose --profile fullstack up --build",
     "docker:down": "docker compose down"
   },
   "dependencies": {

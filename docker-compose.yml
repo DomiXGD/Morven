@@ -12,7 +12,7 @@ services:
       timeout: 5s
       retries: 5
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./server/sql/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
@@ -28,13 +28,16 @@ services:
       PORT: ${PORT:-4001}
       DATABASE_URL: ${DATABASE_URL:-postgresql://morven_user:morven_password@db:5432/morven}
       CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000}
+      ADMIN_API_KEY: ${ADMIN_API_KEY:-morven-admin-key}
     depends_on:
       db:
         condition: service_healthy
     ports:
-      - "4001:4001"
+      - "${API_PORT:-4001}:4001"
 
   web:
+    profiles:
+      - fullstack
     build:
       context: .
       dockerfile: Dockerfile
@@ -47,10 +50,13 @@ services:
       NODE_ENV: production
       API_INTERNAL_URL: ${API_INTERNAL_URL:-http://api:4001}
       NEXT_PUBLIC_CONTACT_API_URL: ${NEXT_PUBLIC_CONTACT_API_URL:-/api/contact}
+      ADMIN_API_KEY: ${ADMIN_API_KEY:-morven-admin-key}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-this-admin-password}
     depends_on:
       - api
     ports:
-      - "3000:3000"
+      - "${WEB_PORT:-3001}:3000"
 
 volumes:
   postgres_data:

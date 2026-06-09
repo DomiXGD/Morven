@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { serverEnv } from "./config";
-import { createContactLead } from "./contact-repository";
+import { createContactLead, listContactLeads } from "./contact-repository";
 import { contactSchema } from "./contact-schema";
 import { db } from "./db";
 
@@ -11,6 +11,19 @@ const corsOrigin = serverEnv.CORS_ORIGIN === "*" ? true : serverEnv.CORS_ORIGIN;
 
 app.use(cors({ origin: corsOrigin }));
 app.use(express.json());
+
+function assertAdminAccess(request: express.Request, response: express.Response) {
+  const adminKey = request.header("x-admin-key");
+
+  if (!adminKey || adminKey !== serverEnv.ADMIN_API_KEY) {
+    response.status(401).json({
+      error: "No autorizado.",
+    });
+    return false;
+  }
+
+  return true;
+}
 
 app.get("/api/health", async (_request, response) => {
   try {
@@ -55,6 +68,26 @@ app.post("/api/contact", async (request, response) => {
 
     return response.status(500).json({
       error: "No se pudo guardar el mensaje.",
+    });
+  }
+});
+
+app.get("/api/admin/leads", async (request, response) => {
+  if (!assertAdminAccess(request, response)) {
+    return;
+  }
+
+  const requestedLimit = Number(request.query.limit ?? 100);
+
+  try {
+    const result = await listContactLeads(Number.isFinite(requestedLimit) ? requestedLimit : 100);
+
+    return response.json(result);
+  } catch (error) {
+    console.error("[admin] Could not fetch leads", error);
+
+    return response.status(500).json({
+      error: "No se pudieron obtener las solicitudes.",
     });
   }
 });

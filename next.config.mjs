@@ -22,6 +22,10 @@ const nextConfig = {
         source: "/api/health",
         destination: `${apiInternalUrl}/api/health`,
       },
+      {
+        source: "/api/admin/leads",
+        destination: `${apiInternalUrl}/api/admin/leads`,
+      },
     ];
   },
 };

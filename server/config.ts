@@ -9,6 +9,7 @@ const envSchema = z.object({
     .min(1)
     .default("postgresql://morven_user:morven_password@localhost:5432/morven"),
   CORS_ORIGIN: z.string().trim().default("*"),
+  ADMIN_API_KEY: z.string().trim().min(8).default("morven-admin-key"),
 });
 
 export const serverEnv = envSchema.parse({
@@ -16,4 +17,5 @@ export const serverEnv = envSchema.parse({
   PORT: process.env.PORT,
   DATABASE_URL: process.env.DATABASE_URL,
   CORS_ORIGIN: process.env.CORS_ORIGIN,
+  ADMIN_API_KEY: process.env.ADMIN_API_KEY,
 });
