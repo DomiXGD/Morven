@@ -5,9 +5,12 @@
     "dev": "concurrently -k -n web,api -c cyan,magenta \"next dev\" \"tsx watch server/index.ts\"",
     "dev:web": "next dev",
     "dev:api": "tsx watch server/index.ts",
+    "start:api": "node --import tsx server/index.ts",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down"
   },
   "dependencies": {
     "concurrently": "^10.0.3",
@@ -15,6 +18,7 @@
     "express": "^5.2.1",
     "gsap": "^3.15.0",
     "next": "latest",
+    "pg": "^8.16.3",
     "react": "latest",
     "react-dom": "latest",
     "tsx": "^4.22.4",
@@ -25,6 +29,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "latest",
+    "@types/pg": "^8.15.5",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "eslint": "latest",

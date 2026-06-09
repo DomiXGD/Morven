@@ -24,7 +24,7 @@ export function ContactForm() {
     setSubmitted(false);
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_API_URL ?? "http://localhost:4001/api/contact", {
+      const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_API_URL ?? "/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
