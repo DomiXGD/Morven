@@ -5,11 +5,46 @@ import { MaterialIcon } from "@/components/icons";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
-    event.currentTarget.reset();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
+    };
+
+    setIsLoading(true);
+    setErrorMessage("");
+    setSubmitted(false);
+
+    try {
+      const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_API_URL ?? "http://localhost:4001/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json().catch(() => ({}))) as { message?: string; error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error ?? result.message ?? "No se pudo enviar el mensaje.");
+      }
+
+      setSubmitted(true);
+      form.reset();
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "No se pudo enviar el mensaje.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -113,10 +148,16 @@ export function ContactForm() {
             </div>
             <button
               type="submit"
-              className="w-full rounded-xl bg-[var(--primary-container)] py-3 font-bold text-white shadow-lg shadow-[rgba(109,40,217,0.2)] transition-all hover:brightness-125 sm:py-3.5"
+              disabled={isLoading}
+              className="w-full rounded-xl bg-[var(--primary-container)] py-3 font-bold text-white shadow-lg shadow-[rgba(109,40,217,0.2)] transition-all hover:brightness-125 disabled:cursor-not-allowed disabled:opacity-70 sm:py-3.5"
             >
-              Enviar Solicitud
+              {isLoading ? "Enviando..." : "Enviar Solicitud"}
             </button>
+            {errorMessage ? (
+              <p className="rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-300">
+                {errorMessage}
+              </p>
+            ) : null}
             {submitted ? (
               <p className="rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-300">
                 Tu mensaje fue enviado correctamente.
