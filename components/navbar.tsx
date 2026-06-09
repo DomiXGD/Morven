@@ -14,7 +14,7 @@ export function GsapNavbar() {
       <nav className="gsap-header-nav">
         <div className="flex items-center gap-2">
           <a href="#inicio" data-gsap-nav onClick={closeMenu}>
-            <LogoMark alt="MORVEN Logo" className="h-7 w-auto sm:h-9 lg:h-12" />
+            <LogoMark alt="MORVEN Logo" className="h-[10px] w-auto sm:h-[12px] lg:h-[14px]" />
           </a>
         </div>
 

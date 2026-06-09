@@ -15,7 +15,7 @@ export function HeroSection() {
         <div className="gsap-animate-in">
           <LogoMark
             alt="MORVEN Large Logo"
-            className="mx-auto mb-6 w-36 drop-shadow-[0_0_30px_rgba(109,40,217,0.3)] max-[420px]:w-32 sm:mb-8 sm:w-56 md:w-80"
+            className="mx-auto mb-6 w-28 drop-shadow-[0_0_30px_rgba(109,40,217,0.3)] max-[420px]:w-24 sm:mb-8 sm:w-44 md:w-64"
           />
         </div>
 

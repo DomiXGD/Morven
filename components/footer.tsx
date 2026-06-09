@@ -9,7 +9,7 @@ export function Footer() {
         <div className="mb-10 grid grid-cols-1 gap-8 md:mb-16 md:grid-cols-4 md:gap-6">
           <div className="col-span-1 space-y-6 text-center md:col-span-2 md:text-left">
             <div className="gsap-animate-in flex items-center justify-center gap-2 md:justify-start">
-              <LogoMark alt="MORVEN Footer Logo" className="h-10 w-auto" />
+              <LogoMark alt="MORVEN Footer Logo" className="h-[14px] w-auto" />
             </div>
             <p className="gsap-animate-in mx-auto max-w-sm text-[var(--muted)] md:mx-0">
               High-Performance Enterprise Solutions para un mundo que nunca se detiene. Innovacion garantizada por ingenieria de elite.
