@@ -1,4 +1,8 @@
-const apiInternalUrl = process.env.API_INTERNAL_URL ?? "http://localhost:4001";
+const rawApiInternalUrl = process.env.API_INTERNAL_URL?.trim();
+const apiInternalUrl =
+  process.env.NODE_ENV === "development" && rawApiInternalUrl?.includes("://api")
+    ? "http://127.0.0.1:4001"
+    : rawApiInternalUrl || "http://127.0.0.1:4001";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

@@ -24,22 +24,38 @@ function formatDate(date: string) {
   }).format(new Date(date));
 }
 
-async function getAdminLeads() {
-  const apiBaseUrl = process.env.API_INTERNAL_URL ?? "http://localhost:4001";
-  const adminApiKey = process.env.ADMIN_API_KEY ?? "morven-admin-key";
+function getAdminApiBaseUrl() {
+  const rawApiInternalUrl = process.env.API_INTERNAL_URL?.trim();
 
-  const response = await fetch(`${apiBaseUrl}/api/admin/leads?limit=100`, {
-    headers: {
-      "x-admin-key": adminApiKey,
-    },
-    cache: "no-store",
-  });
-
-  if (!response.ok) {
-    throw new Error("No se pudo cargar el panel administrativo.");
+  if (process.env.NODE_ENV === "development" && rawApiInternalUrl?.includes("://api")) {
+    return "http://127.0.0.1:4001";
   }
 
-  return (await response.json()) as AdminLeadsResponse;
+  return rawApiInternalUrl || "http://127.0.0.1:4001";
+}
+
+async function getAdminLeads() {
+  const apiBaseUrl = getAdminApiBaseUrl();
+  const adminApiKey = process.env.ADMIN_API_KEY ?? "morven-admin-key";
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/admin/leads?limit=100`, {
+      headers: {
+        "x-admin-key": adminApiKey,
+      },
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      console.error(`Error HTTP desde la API: ${response.status} ${response.statusText}`);
+      throw new Error(`El API respondió con error: ${response.status}`);
+    }
+
+    return (await response.json()) as AdminLeadsResponse;
+  } catch (error) {
+    console.error("Error al conectar con el backend de admin:", error);
+    throw new Error("No se pudo conectar con el servidor interno. Verifica que la API en el puerto 4001 esté ejecutándose.");
+  }
 }
 
 export default async function AdminPage() {

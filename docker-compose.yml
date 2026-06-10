@@ -35,28 +35,5 @@ services:
     ports:
       - "${API_PORT:-4001}:4001"
 
-  web:
-    profiles:
-      - fullstack
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        API_INTERNAL_URL: ${API_INTERNAL_URL:-http://api:4001}
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      NODE_ENV: production
-      API_INTERNAL_URL: ${API_INTERNAL_URL:-http://api:4001}
-      NEXT_PUBLIC_CONTACT_API_URL: ${NEXT_PUBLIC_CONTACT_API_URL:-/api/contact}
-      ADMIN_API_KEY: ${ADMIN_API_KEY:-morven-admin-key}
-      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
-      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-this-admin-password}
-    depends_on:
-      - api
-    ports:
-      - "${WEB_PORT:-3001}:3000"
-
 volumes:
   postgres_data:

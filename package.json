@@ -10,9 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "docker:up": "docker compose up --build",
+    "docker:up": "docker compose up -d db api",
     "docker:infra": "docker compose up -d db api",
-    "docker:full": "docker compose --profile fullstack up --build",
     "docker:down": "docker compose down"
   },
   "dependencies": {

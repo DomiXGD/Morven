@@ -15,6 +15,10 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (process.env.NODE_ENV === "development") {
+    return NextResponse.next();
+  }
+
   const authHeader = request.headers.get("authorization");
   const adminUsername = process.env.ADMIN_USERNAME ?? "admin";
   const adminPassword = process.env.ADMIN_PASSWORD ?? "change-this-admin-password";
